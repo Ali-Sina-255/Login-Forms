@@ -34,42 +34,67 @@ const validateEmail = (email) => {
     );
 };
 
+
+
+// check requied Fields 
+
+function CheckRequiredFiled(inputarr){
+  inputarr.forEach(function(input){
+    if(input.value.trim() === ""){
+      showError(input,`${getFieldName(input)} is required !`);
+
+    }else{
+      Showsuccess(input);
+    }
+
+    console.log(input.value);
+  });
+  
+
+}
+
+// Get Field Name 
+
+function getFieldName(input){
+  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
 // Event listners
 form.addEventListener('submit', function(e) {
   e.preventDefault();
+  CheckRequiredFiled([username,email,password,password2])
 
-  if(username.value === ''){
-    showError(username,'User name is requried !');
+  // if(username.value === ''){
+  //   showError(username,'User name is requried !');
 
-  }else{
-    Showsuccess(username);
-  }
+  // }else{
+  //   Showsuccess(username);
+  // }
 
-  if(email.value === ''){
-    showError(email,'Email is requried !');
+  // if(email.value === ''){
+  //   showError(email,'Email is requried !');
 
 
-  } else if(!validateEmail(email.value)){
-    showError(email,'Email is not valid !');
+  // } else if(!validateEmail(email.value)){
+  //   showError(email,'Email is not valid !');
 
-  }
-  else{
-    Showsuccess(email);
-  }
+  // }
+  // else{
+  //   Showsuccess(email);
+  // }
 
-  if(password.value === ''){
-    showError(password,'User name is requried !');
+  // if(password.value === ''){
+  //   showError(password,'User name is requried !');
 
-  }else{
-    Showsuccess(password);
-  }
+  // }else{
+  //   Showsuccess(password);
+  // }
 
-  if(password2.value === ''){
-    showError(password2,'password is requried !');
+  // if(password2.value === ''){
+  //   showError(password2,'password is requried !');
 
-  }else{
-    Showsuccess(password2);
-  }
+  // }else{
+  //   Showsuccess(password2);
+  // }
     
 
   // console.log(username.value);
