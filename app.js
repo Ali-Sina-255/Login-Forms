@@ -58,11 +58,39 @@ function CheckRequiredFiled(inputarr){
 function getFieldName(input){
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
+
+
+// Check Required Field 
+function CheckReqired(input,min, max){
+  if(input.value.length < min ){
+    showError(input, `${getFieldName(input)} must be at less then ${min} charcaters`);
+
+  }else if (input.value.length > max){
+    showError(input, `${getFieldName(input)} must be less then ${max} charcaters `)
+  }
+  else {
+    Showsuccess(input);
+  }
+}
+
+
+// check Passworod match 
+
+
+function CheckPassword(input1, input2){
+  if ( input1.value !== input2.value){
+    showError(input2,"Password do not match !");
+  }
+}
 // Event listners
+
 form.addEventListener('submit', function(e) {
   e.preventDefault();
   CheckRequiredFiled([username,email,password,password2])
 
+  CheckReqired(username,3,15);
+  CheckReqired(email,10,30);
+  CheckPassword(password,password2)
   // if(username.value === ''){
   //   showError(username,'User name is requried !');
 
@@ -72,30 +100,5 @@ form.addEventListener('submit', function(e) {
 
   // if(email.value === ''){
   //   showError(email,'Email is requried !');
-
-
-  // } else if(!validateEmail(email.value)){
-  //   showError(email,'Email is not valid !');
-
-  // }
-  // else{
-  //   Showsuccess(email);
-  // }
-
-  // if(password.value === ''){
-  //   showError(password,'User name is requried !');
-
-  // }else{
-  //   Showsuccess(password);
-  // }
-
-  // if(password2.value === ''){
-  //   showError(password2,'password is requried !');
-
-  // }else{
-  //   Showsuccess(password2);
-  // }
-    
-
   // console.log(username.value);
 }); 
